@@ -5,3 +5,4 @@ void gameClicks(){
 mode=GAMEOVER;
 
 }
+//Brace highlights when you select it
