@@ -64,7 +64,8 @@ void gameClicks() {
   }
   if (lives == 0) mode = GAMEOVER;
 }
-void displayTarget() {
+void displayTarget() { 
+  //draws the target to press
 
   // outermost ring
   stroke(0);
