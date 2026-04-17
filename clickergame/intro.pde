@@ -1,5 +1,6 @@
 void intro() {
-  
+  //sounds
+  gameover.pause();
   theme.play();
   
   background(0,255,255);

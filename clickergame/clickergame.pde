@@ -47,7 +47,6 @@ void setup() {
   lives=3;
   
   //minim
-  //
   minim = new Minim(this);
   theme = minim.loadFile("mario bros theme.mp3");
   coin = minim.loadFile("coin.wav");
