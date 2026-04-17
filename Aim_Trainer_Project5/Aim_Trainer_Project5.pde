@@ -22,6 +22,7 @@ final int GAMEOVER=3;
 //TARGET VARIABLES---------------------------------------------------------------------------
 float x,y,d;
 int score, lives;
+float popupX, popupY, popupValue, popupTimer;
 //COLOR PALLETTE-------------------------------------------------------------------------
 
 //sound variables
@@ -57,6 +58,7 @@ void draw() {
     intro();
   } else if (mode == GAME) {
     game();
+     drawPopup();
   } else if (mode == PAUSE) {
     pause();
   } else if (mode == GAMEOVER) {

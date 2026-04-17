@@ -27,18 +27,30 @@ void game() {
 void gameClicks() {
   if (dist(mouseX, mouseY, x, y) < d/8) { // bullseye
     score += 3;
+    popupX = mouseX;
+    popupY = mouseY;
+    popupValue = 3;
+    popupTimer = 50;
     coin.rewind();
     coin.play();
     x = random(d/2, width-d/2);
     y = random(d/2, height-d/2);
   } else if (dist(mouseX, mouseY, x, y) < d/4) { // inner ring
     score += 2;
+    popupX = mouseX;
+    popupY = mouseY;
+    popupValue = 2;
+    popupTimer = 50;
     coin.rewind();
     coin.play();
     x = random(d/2, width-d/2);
     y = random(d/2, height-d/2);
   } else if (dist(mouseX, mouseY, x, y) < d/2) { // outer ring
     score += 1;
+    popupX = mouseX;
+    popupY = mouseY;
+    popupValue = 1;
+    popupTimer = 50;
     coin.rewind();
     coin.play();
     x = random(d/2, width-d/2);
@@ -69,4 +81,13 @@ void displayTarget() {
   // bullseye
   fill(255, 0, 0);
   circle(x, y, d * 0.25);
+}
+void drawPopup() {
+  if (popupTimer > 0) {
+    textSize(45);
+    textAlign(CENTER, CENTER);
+    fill(255, 255, 255, popupTimer * 3); // fades out
+    text("+" + (int)popupValue, popupX, popupY - (50 - popupTimer)); // floats up
+    popupTimer--;
+  }
 }

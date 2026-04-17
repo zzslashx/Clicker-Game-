@@ -11,6 +11,8 @@ void pauseClicks(){
 
 if(dist(width-100,100,mouseX,mouseY)<40){ //pause button
   mode=GAME;
+  theme.rewind();
+  theme.play();
  }
   
 }
