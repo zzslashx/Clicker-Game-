@@ -3,7 +3,9 @@ void gameover() {
   background(255, 0, 0);
   theme.pause();
   gameover.play();
-  score =0;
+   bull=0;
+  mid=0;
+  out=0;
   lives=3;
   textSize(100);
   fill(0);

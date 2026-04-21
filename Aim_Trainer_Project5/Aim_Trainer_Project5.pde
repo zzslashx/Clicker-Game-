@@ -24,7 +24,8 @@ final int OPTIONS=4;
 float x, y, d;
 float x1, y1, d1;
 float x2, y2, d2;
-int score, lives;
+int lives;
+int bull, mid, out;
 float popupX, popupY, popupValue, popupTimer;
 float sliderX, size;
 //COLOR PALLETTE-------------------------------------------------------------------------
@@ -66,7 +67,9 @@ void setup() {
   x2=width/2;
   y2=height/2;
   d2=100;
-  score=0;
+  bull=0;
+  mid=0;
+  out=0;
   lives=10;
   sliderX=map(d, 40, 165, 50, 255);
 

@@ -19,7 +19,9 @@ void game() {
 
   //score + lives
   textSize(25);
-  text("Score: " + score, 100, 100);
+  text("BUllSEYE: " + bull, 100, 100);
+  text("Inner Rings: " + mid, 100, 100);
+   text("Outer Rings: " + out, 100, 100);
   text("Lives: " + lives, 100, 150);
 
   displayTarget1();
@@ -31,19 +33,19 @@ void gameClicks() {
 
   // target 1
   if (dist(mouseX, mouseY, x, y) < d/8) {
-    score += 3;
+    bull += 3;
     popupValue = 3;
     hit = true;
     x = random(d/2, width-d/2);
     y = random(d/2, height-d/2);
   } else if (dist(mouseX, mouseY, x, y) < d/4) {
-    score += 2;
+    mid += 2;
     popupValue = 2;
     hit = true;
     x = random(d/2, width-d/2);
     y = random(d/2, height-d/2);
   } else if (dist(mouseX, mouseY, x, y) < d/2) {
-    score += 1;
+    out += 1;
     popupValue = 1;
     hit = true;
     x = random(d/2, width-d/2);
@@ -52,19 +54,19 @@ void gameClicks() {
 
   // target 2
   if (dist(mouseX, mouseY, x1, y1) < d1/8) {
-    score += 3;
+    bull += 3;
     popupValue = 3;
     hit = true;
     x1 = random(d/2, width-d/2);
     y1 = random(d/2, height-d/2);
   } else if (dist(mouseX, mouseY, x1, y1) < d1/4) {
-    score += 2;
+    mid += 2;
     popupValue = 2;
     hit = true;
     x1 = random(d/2, width-d/2);
     y1 = random(d/2, height-d/2);
   } else if (dist(mouseX, mouseY, x1, y1) < d1/2) {
-    score += 1;
+    out += 1;
     popupValue = 1;
     hit = true;
     x1 = random(d/2, width-d/2);
@@ -73,19 +75,19 @@ void gameClicks() {
 
   // target 3
   if (dist(mouseX, mouseY, x2, y2) < d2/8) {
-    score += 3;
+    bull += 3;
     popupValue = 3;
     hit = true;
     x2 = random(d/2, width-d/2);
     y2 = random(d/2, height-d/2);
   } else if (dist(mouseX, mouseY, x2, y2) < d2/4) {
-    score += 2;
+    mid += 2;
     popupValue = 2;
     hit = true;
     x2 = random(d/2, width-d/2);
     y2 = random(d/2, height-d/2);
   } else if (dist(mouseX, mouseY, x2, y2) < d2/2) {
-    score += 1;
+    out += 1;
     popupValue = 1;
     hit = true;
     x2 = random(d/2, width-d/2);
