@@ -22,6 +22,8 @@ final int OPTIONS=4;
 
 //TARGET VARIABLES---------------------------------------------------------------------------
 float x, y, d;
+float x1, y1, d1;
+float x2, y2, d2;
 int score, lives;
 float popupX, popupY, popupValue, popupTimer;
 float sliderX, size;
@@ -55,12 +57,18 @@ void setup() {
   mode = INTRO;
 
   //target initialization
-  x = width/2;
-  y = height/2;
-  d = 100;
-  score =0;
-  lives=3;
-  sliderX=40;
+  x=width/2;
+  y=height/2;
+  d=100;
+  x1=width/2;
+  y1=height/2;
+  d1=100;
+  x2=width/2;
+  y2=height/2;
+  d2=100;
+  score=0;
+  lives=10;
+  sliderX=map(d, 40, 165, 50, 255);
 
   //minim
   minim = new Minim(this);
@@ -80,10 +88,9 @@ void draw() {
     pause();
   } else if (mode == GAMEOVER) {
     gameover();
-  }else if(mode == OPTIONS){
-  options();
-  } 
-  else {
+  } else if (mode == OPTIONS) {
+    options();
+  } else {
     println("Error: Mode = " + mode);
   }
 }

@@ -22,73 +22,90 @@ void game() {
   text("Score: " + score, 100, 100);
   text("Lives: " + lives, 100, 150);
 
-  displayTarget();
+  displayTarget1();
+  displayTarget2();
+  displayTarget3();
 }
 void gameClicks() {
-  if (dist(mouseX, mouseY, x, y) < d/8) { // bullseye
+  boolean hit = false;
+
+  // target 1
+  if (dist(mouseX, mouseY, x, y) < d/8) {
     score += 3;
-    popupX = mouseX;
-    popupY = mouseY;
     popupValue = 3;
-    popupTimer = 50;
-    coin.rewind();
-    coin.play();
+    hit = true;
     x = random(d/2, width-d/2);
     y = random(d/2, height-d/2);
-  } else if (dist(mouseX, mouseY, x, y) < d/4) { // inner ring
+  } else if (dist(mouseX, mouseY, x, y) < d/4) {
     score += 2;
-    popupX = mouseX;
-    popupY = mouseY;
     popupValue = 2;
-    popupTimer = 50;
-    coin.rewind();
-    coin.play();
+    hit = true;
     x = random(d/2, width-d/2);
     y = random(d/2, height-d/2);
-  } else if (dist(mouseX, mouseY, x, y) < d/2) { // outer ring
+  } else if (dist(mouseX, mouseY, x, y) < d/2) {
     score += 1;
+    popupValue = 1;
+    hit = true;
+    x = random(d/2, width-d/2);
+    y = random(d/2, height-d/2);
+  }
+
+  // target 2
+  if (dist(mouseX, mouseY, x1, y1) < d1/8) {
+    score += 3;
+    popupValue = 3;
+    hit = true;
+    x1 = random(d/2, width-d/2);
+    y1 = random(d/2, height-d/2);
+  } else if (dist(mouseX, mouseY, x1, y1) < d1/4) {
+    score += 2;
+    popupValue = 2;
+    hit = true;
+    x1 = random(d/2, width-d/2);
+    y1 = random(d/2, height-d/2);
+  } else if (dist(mouseX, mouseY, x1, y1) < d1/2) {
+    score += 1;
+    popupValue = 1;
+    hit = true;
+    x1 = random(d/2, width-d/2);
+    y1 = random(d/2, height-d/2);
+  }
+
+  // target 3
+  if (dist(mouseX, mouseY, x2, y2) < d2/8) {
+    score += 3;
+    popupValue = 3;
+    hit = true;
+    x2 = random(d/2, width-d/2);
+    y2 = random(d/2, height-d/2);
+  } else if (dist(mouseX, mouseY, x2, y2) < d2/4) {
+    score += 2;
+    popupValue = 2;
+    hit = true;
+    x2 = random(d/2, width-d/2);
+    y2 = random(d/2, height-d/2);
+  } else if (dist(mouseX, mouseY, x2, y2) < d2/2) {
+    score += 1;
+    popupValue = 1;
+    hit = true;
+    x2 = random(d/2, width-d/2);
+    y2 = random(d/2, height-d/2);
+  }
+
+  // shared popup and sound for any hit
+  if (hit) {
     popupX = mouseX;
     popupY = mouseY;
-    popupValue = 1;
     popupTimer = 50;
     coin.rewind();
     coin.play();
-    x = random(d/2, width-d/2);
-    y = random(d/2, height-d/2);
-  } else if (dist(width-100, 100, mouseX, mouseY) < 45) { // pause button
+  } else if (dist(width-100, 100, mouseX, mouseY) < 45) {
     mode = PAUSE;
-  } else { // miss
+  } else {
     lives--;
     bump.rewind();
     bump.play();
   }
-  if (lives == 0) mode = GAMEOVER;
-}
-void displayTarget() { 
-  //draws the target to press
 
-  // outermost ring
-  stroke(0);
-  strokeWeight(3);
-  fill(255, 255, 255);
-  circle(x, y, d);
-  noStroke();
-  // second ring
-  fill(255, 0, 0);
-  circle(x, y, d * 0.75);
-  // third ring
-  fill(255, 255, 255);
-  circle(x, y, d * 0.5);
-  // bullseye
-  fill(255, 0, 0);
-  circle(x, y, d * 0.25);
-}
-void drawPopup() {
-  if (popupTimer > 0) {
-    textSize(55);
-    textAlign(CENTER, CENTER);
-    fill(255, 255, 255, popupTimer * 3); // fades out
-    text("+" + (int)popupValue, popupX, popupY - (50 - popupTimer)); // floats up
-    popupTimer--;
-  }
+  if (lives == 0) mode = GAMEOVER;
 }
