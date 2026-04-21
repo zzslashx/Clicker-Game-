@@ -16,13 +16,14 @@ void game() {
     fill(0);
     triangle(width-115, 70, width-115, 130, width-70, 100);
   }
-
+  int total= bull*3+mid*2+out;
   //score + lives
   textSize(25);
-  text("BUllSEYE: " + bull, 100, 100);
-  text("Inner Rings: " + mid, 100, 100);
-   text("Outer Rings: " + out, 100, 100);
-  text("Lives: " + lives, 100, 150);
+  text("BUllSEYE (3 points): " + bull, 150, 100);
+  text("Inner Rings (2 points): " + mid, 150, 125);
+  text("Outer Rings (1 point): " + out, 150, 150);
+  text("total points: " + total, 150, 175);
+  text("Lives: " + lives, 150, 200);
 
   displayTarget1();
   displayTarget2();
@@ -33,19 +34,22 @@ void gameClicks() {
 
   // target 1
   if (dist(mouseX, mouseY, x, y) < d/8) {
-    bull += 3;
+    timer1=180;
+    bull ++;
     popupValue = 3;
     hit = true;
     x = random(d/2, width-d/2);
     y = random(d/2, height-d/2);
   } else if (dist(mouseX, mouseY, x, y) < d/4) {
-    mid += 2;
+    timer1=180;
+    mid ++;
     popupValue = 2;
     hit = true;
     x = random(d/2, width-d/2);
     y = random(d/2, height-d/2);
   } else if (dist(mouseX, mouseY, x, y) < d/2) {
-    out += 1;
+    timer1=180;
+    out ++;
     popupValue = 1;
     hit = true;
     x = random(d/2, width-d/2);
@@ -53,20 +57,23 @@ void gameClicks() {
   }
 
   // target 2
-  if (dist(mouseX, mouseY, x1, y1) < d1/8) {
-    bull += 3;
+  else if (dist(mouseX, mouseY, x1, y1) < d1/8) {
+    timer2=180;
+    bull ++;
     popupValue = 3;
     hit = true;
     x1 = random(d/2, width-d/2);
     y1 = random(d/2, height-d/2);
   } else if (dist(mouseX, mouseY, x1, y1) < d1/4) {
-    mid += 2;
+    timer2=180;
+    mid ++;
     popupValue = 2;
     hit = true;
     x1 = random(d/2, width-d/2);
     y1 = random(d/2, height-d/2);
   } else if (dist(mouseX, mouseY, x1, y1) < d1/2) {
-    out += 1;
+    timer2=180;
+    out ++;
     popupValue = 1;
     hit = true;
     x1 = random(d/2, width-d/2);
@@ -74,28 +81,31 @@ void gameClicks() {
   }
 
   // target 3
-  if (dist(mouseX, mouseY, x2, y2) < d2/8) {
-    bull += 3;
+  else if (dist(mouseX, mouseY, x2, y2) < d2/8) {
+    timer3=180;
+    bull ++;
     popupValue = 3;
     hit = true;
     x2 = random(d/2, width-d/2);
     y2 = random(d/2, height-d/2);
   } else if (dist(mouseX, mouseY, x2, y2) < d2/4) {
-    mid += 2;
+    timer3=180;
+    mid ++;
     popupValue = 2;
     hit = true;
     x2 = random(d/2, width-d/2);
     y2 = random(d/2, height-d/2);
   } else if (dist(mouseX, mouseY, x2, y2) < d2/2) {
-    out += 1;
+    timer3=180;
+    out ++;
     popupValue = 1;
     hit = true;
     x2 = random(d/2, width-d/2);
     y2 = random(d/2, height-d/2);
   }
 
-  // shared popup and sound for any hit
-  if (hit) {
+  // popup and sound
+  if (hit==true) {
     popupX = mouseX;
     popupY = mouseY;
     popupTimer = 50;
@@ -109,5 +119,5 @@ void gameClicks() {
     bump.play();
   }
 
-  if (lives == 0) mode = GAMEOVER;
+  if (lives <= 0) mode = GAMEOVER;
 }

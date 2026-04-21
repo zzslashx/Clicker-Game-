@@ -23,6 +23,7 @@ void intro() {
   text("options", (width/2)+120, height/2+height/4);
 }
 void introClicks() {
+
   // start button
   if (mouseX > width/2 - 200 && mouseX < width/2 && mouseY > height/2 + height/4 - 50 && mouseY < height/2 + height/4 + 50) {
     mode = GAME;

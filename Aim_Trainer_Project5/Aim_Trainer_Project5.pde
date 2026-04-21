@@ -1,3 +1,5 @@
+import processing.javafx.*;
+
 //Cheng Cheng
 //Block 1-1
 //April 15,2026
@@ -28,6 +30,7 @@ int lives;
 int bull, mid, out;
 float popupX, popupY, popupValue, popupTimer;
 float sliderX, size;
+float timer1, timer2, timer3;
 //COLOR PALLETTE-------------------------------------------------------------------------
 //Colors
 //essential primaries
@@ -51,27 +54,31 @@ AudioPlayer theme, coin, bump, gameover;
 
 
 void setup() {
-  size(800, 800);
+  size(800, 800, FX2D);
+  frameRate(60);
   textAlign(CENTER, CENTER);
   rectMode(CENTER);
 
   mode = INTRO;
 
   //target initialization
-  x=width/2;
-  y=height/2;
+  x=random(d/2, width-d/2);
+  y=random(d/2, height-d/2);
   d=100;
-  x1=width/2;
-  y1=height/2;
+  x1=random(d/2, width-d/2);
+  y1=random(d/2, height-d/2);
   d1=100;
-  x2=width/2;
-  y2=height/2;
+  x2 = random(d/2, width-d/2);
+  y2 = random(d/2, height-d/2);
   d2=100;
   bull=0;
   mid=0;
   out=0;
-  lives=10;
-  sliderX=map(d, 40, 165, 50, 255);
+  lives=3;
+  sliderX = map(d, 50, 255, 40, 165);
+  timer1 = 180; // 3 seconds at 60fps
+  timer2 = 180;
+  timer3 = 180;
 
   //minim
   minim = new Minim(this);
@@ -82,6 +89,7 @@ void setup() {
 }
 
 void draw() {
+  println(frameRate);
   if (mode == INTRO) {
     intro();
   } else if (mode == GAME) {
