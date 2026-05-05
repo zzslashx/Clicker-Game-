@@ -74,7 +74,7 @@ void setup() {
   bull=0;
   mid=0;
   out=0;
-  lives=3;
+  lives=10;
   sliderX = map(d, 50, 255, 40, 165);
   timer1 = 180; // 3 seconds at 60fps
   timer2 = 180;
@@ -101,6 +101,11 @@ void draw() {
     gameover();
   } else if (mode == OPTIONS) {
     options();
+     if ( mouseX > 40 && mouseX < 165 && mouseY > height/2 + 15 && mouseY < height/2 + 45) {
+    stroke(255);
+  } else {
+    stroke(0);
+  }
   } else {
     println("Error: Mode = " + mode);
   }
