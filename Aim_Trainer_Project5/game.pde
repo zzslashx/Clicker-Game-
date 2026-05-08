@@ -28,6 +28,10 @@ void game() {
   displayTarget1();
   displayTarget2();
   displayTarget3();
+  if (lives <= 0) {
+    mode = GAMEOVER;
+    resetVariables();
+  }
 }
 void gameClicks() {
   boolean hit = false;
@@ -118,6 +122,4 @@ void gameClicks() {
     bump.rewind();
     bump.play();
   }
-
-  if (lives <= 0) mode = GAMEOVER;
 }

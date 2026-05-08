@@ -31,6 +31,9 @@ int bull, mid, out;
 float popupX, popupY, popupValue, popupTimer;
 float sliderX, size;
 float timer1, timer2, timer3;
+int typeOfTarget;
+//IMAGES--------------------------------------------------------------
+PImage tomato, pizza;
 //COLOR PALLETTE-------------------------------------------------------------------------
 //Colors
 //essential primaries
@@ -56,11 +59,15 @@ AudioPlayer theme, coin, bump, gameover;
 void setup() {
   size(800, 800, FX2D);
   frameRate(60);
+  imageMode(CENTER);
   textAlign(CENTER, CENTER);
   rectMode(CENTER);
 
   mode = INTRO;
 
+  //Image Loading
+  tomato = loadImage("tomato.png");
+  pizza = loadImage("pizza.png");
   //target initialization
   x=random(d/2, width-d/2);
   y=random(d/2, height-d/2);
@@ -74,17 +81,18 @@ void setup() {
   bull=0;
   mid=0;
   out=0;
-  lives=10;
-  sliderX = map(d, 50, 255, 40, 165);
+  lives=5;
+  typeOfTarget = 1;
+  sliderX = map(d, 70, 255, 40, 165);
   timer1 = 180; // 3 seconds at 60fps
   timer2 = 180;
   timer3 = 180;
 
   //minim
   minim = new Minim(this);
-  theme = minim.loadFile("mario bros theme.mp3");
+  theme = minim.loadFile("MUSIC.mp3");
   coin = minim.loadFile("coin.wav");
-  bump = minim.loadFile("bump.wav");
+  bump = minim.loadFile("FAILURE.wav");
   gameover = minim.loadFile("gameover.wav");
 }
 
@@ -101,11 +109,11 @@ void draw() {
     gameover();
   } else if (mode == OPTIONS) {
     options();
-     if ( mouseX > 40 && mouseX < 165 && mouseY > height/2 + 15 && mouseY < height/2 + 45) {
-    stroke(255);
-  } else {
-    stroke(0);
-  }
+    if ( mouseX > 40 && mouseX < 165 && mouseY > height/2 + 15 && mouseY < height/2 + 45) {
+      stroke(255);
+    } else {
+      stroke(0);
+    }
   } else {
     println("Error: Mode = " + mode);
   }

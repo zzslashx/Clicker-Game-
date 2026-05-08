@@ -9,9 +9,10 @@ void drawGradientRect(float cx, float cy, float w, float h, color c1, color c2) 
     line(x, y + i, x + w, y + i);
   }
 }
-void displayTarget() {
+void displayTarget(int x, int y) {
   //draws the target to press
   // outermost ring
+  if(typeOfTarget == 1){
   stroke(0);
   strokeWeight(3);
   fill(255, 255, 255);
@@ -26,8 +27,40 @@ void displayTarget() {
   // bullseye
   fill(255, 0, 0);
   circle(x, y, d * 0.25);
+  } else if(typeOfTarget == 2){
+  
+  } else if(typeOfTarget == 3){
+  
+  
+  }
+  
 }
-
+void displayTarget67(int x, int y, int d) {
+  //draws the target to press
+  // outermost ring
+  if(typeOfTarget == 1){
+  stroke(0);
+  strokeWeight(3);
+  fill(255, 255, 255);
+  circle(x, y, d);
+  noStroke();
+  // second ring
+  fill(255, 0, 0);
+  circle(x, y, d * 0.75);
+  // third ring
+  fill(255, 255, 255);
+  circle(x, y, d * 0.5);
+  // bullseye
+  fill(255, 0, 0);
+  circle(x, y, d * 0.25);
+  } else if(typeOfTarget == 2){
+  
+  } else if(typeOfTarget == 3){
+  
+  
+  }
+  
+}
 void displayTarget1() {
   timer1--;
   if (timer1 <= 0) {
@@ -44,20 +77,26 @@ void displayTarget1() {
   noFill();
   arc(x, y, d + 20, d + 20, -HALF_PI, -HALF_PI + TWO_PI * (timer1/180.0));
   
+    if(typeOfTarget == 1){
   stroke(0);
   strokeWeight(3);
   fill(255, 255, 255);
   circle(x, y, d);
-  
   noStroke();
+  // second ring
   fill(255, 0, 0);
   circle(x, y, d * 0.75);
-  
+  // third ring
   fill(255, 255, 255);
   circle(x, y, d * 0.5);
-  
+  // bullseye
   fill(255, 0, 0);
   circle(x, y, d * 0.25);
+  } else if(typeOfTarget == 2){
+  
+  } else if(typeOfTarget == 3){
+  
+}
 }
 
 void displayTarget2() {
@@ -75,7 +114,7 @@ void displayTarget2() {
   strokeWeight(5);
   noFill();
   arc(x1, y1, d1 + 20, d1 + 20, -HALF_PI, -HALF_PI + TWO_PI * (timer2/180.0));
-  
+  if(typeOfTarget==1){
   stroke(0);
   strokeWeight(3);
   
@@ -91,6 +130,11 @@ void displayTarget2() {
   
   fill(255, 0, 0);
   circle(x1, y1, d1 * 0.25);
+  } else if (typeOfTarget ==2){
+  
+  }else if(typeOfTarget ==3){
+  
+  }
 }
 
 void displayTarget3() {
@@ -108,6 +152,7 @@ void displayTarget3() {
   strokeWeight(5);
   noFill();
   arc(x2, y2, d2 + 20, d2 + 20, -HALF_PI, -HALF_PI + TWO_PI * (timer3/180.0));
+  if(typeOfTarget ==1){
   stroke(0);
   strokeWeight(3);
   
@@ -123,7 +168,12 @@ void displayTarget3() {
   
   fill(255, 0, 0);
   circle(x2, y2, d2 * 0.25);
+  }else if(typeOfTarget ==2){
+    
+  }else if(typeOfTarget ==3){
   
+  }
+ 
 }
 void drawPopup() {
   if (popupTimer > 0) {
@@ -157,3 +207,14 @@ void randomizeTargets() {
   x2 = random(d/2, width-d/2);
   y2 = random(d/2, height-d/2);
 }
+
+void tactileRect(int x, int y, int w, int h) {
+  if (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h) {
+    fill(255, 255, 0);
+    stroke(255);
+  } else {
+    fill(255);
+    stroke(0);
+  }
+ 
+}//----------------------------
