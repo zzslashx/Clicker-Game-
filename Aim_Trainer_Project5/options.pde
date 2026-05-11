@@ -33,10 +33,10 @@ void options() {
   imageMode(CENTER);
   rectMode(CORNER);
 
-  tactileRect(95*2-175/2, 185*2-175/2, 175, 175);
+  tactileRect(95*2-175/2, 185*2-175/2+10, 175, 175);
   strokeWeight(5);
-  rect(95*2-175/2, 185*2-175/2, 175, 175);
-  displayTarget67(95*2, 185*2, 155);
+  rect(95*2-175/2, 185*2-175/2+10, 175, 175);
+  displayTarget67(95*2, 193*2, 155);
 
   tactileRect(width/2+5-175/2, height/2-20-175/2, 175, 175);
   strokeWeight(5);
