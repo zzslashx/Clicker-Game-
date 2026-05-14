@@ -1,7 +1,7 @@
 void gameover() {
-  background(255, 0, 0);
+  drawGradientRect(width/2, height/2, width, height, brightRed, brightOrange);
   textSize(100);
-  fill(0);
+  fill(255);
   text("GAMEOVER :c", width/2, height/2 - 100);
   textSize(40);
   if (newHighScore) {
@@ -16,14 +16,14 @@ void gameover() {
   rectMode(CENTER);
   fill(0);
   textSize(35);
-  
+
   text("PLAY AGAIN", width/2, height/2 + 150);
 }
 
 void gameoverClicks() {
   // play again button
   if (mouseX > width/2 - 100 && mouseX < width/2 + 100 &&
-      mouseY > height/2 + 115 && mouseY < height/2 + 185) {
+    mouseY > height/2 + 115 && mouseY < height/2 + 185) {
     resetVariables();
     theme.rewind();
     theme.play();

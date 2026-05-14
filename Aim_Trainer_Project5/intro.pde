@@ -4,7 +4,7 @@ void intro() {
   theme.play();
   
   // background
-  drawGradientRect(width/2, height/2, width, height, color(0, 20, 60), color(0, 80, 160));
+  drawGradientRect(width/2, height/2, width, height,warmBlue,coolBlue);
   
   // text
   fill(255);

@@ -1,7 +1,15 @@
 void game() {
 
   //visuals
-  background(0, 120, 0);
+  drawGradientRect(width/2, height/2, width, height, color(0, 20, 60), color(0, 80, 160));
+ for (int i = width; i >= 10; i -= 10) {
+   strokeWeight(2);
+  line(0, i, i, 0);       
+  line(width, i, i, 0);   
+  line(0, i, i, height); 
+  line(width, i, i, height); 
+}
+
   //pause button
   stroke(0);
   fill(255);
@@ -30,21 +38,21 @@ void game() {
   displayTarget3();
   if (lives <= 0) {
     total = bull*3 + mid*2 + out;
-  if (lives <= 0) {
-  total = bull*3 + mid*2 + out;
-  if (total > highscore) {
-    highscore = total;
-    newHighScore = true;
-  } else {
-    newHighScore = false;
+    if (lives <= 0) {
+      total = bull*3 + mid*2 + out;
+      if (total > highscore) {
+        highscore = total;
+        newHighScore = true;
+      } else {
+        newHighScore = false;
+      }
+      gameover.rewind();
+      gameover.play();
+      theme.pause();
+      resetVariables();
+      mode = GAMEOVER;
+    }
   }
-  gameover.rewind();
-  gameover.play();
-  theme.pause();
-  resetVariables();
-  mode = GAMEOVER;
-}
-}
 }
 void gameClicks() {
   boolean hit = false;
