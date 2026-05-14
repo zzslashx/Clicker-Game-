@@ -32,6 +32,9 @@ float popupX, popupY, popupValue, popupTimer;
 float sliderX, size;
 float timer1, timer2, timer3;
 int typeOfTarget;
+int highscore=0;
+int total= bull*3+mid*2+out;
+boolean newHighScore = false;
 //IMAGES--------------------------------------------------------------
 PImage tomato, pizza;
 //COLOR PALLETTE-------------------------------------------------------------------------
@@ -102,6 +105,7 @@ void draw() {
     intro();
   } else if (mode == GAME) {
     game();
+    
     drawPopup();
   } else if (mode == PAUSE) {
     pause();

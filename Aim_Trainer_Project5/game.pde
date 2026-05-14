@@ -16,7 +16,7 @@ void game() {
     fill(0);
     triangle(width-115, 70, width-115, 130, width-70, 100);
   }
-  int total= bull*3+mid*2+out;
+  total= bull*3+mid*2+out;
   //score + lives
   textSize(25);
   text("BUllSEYE (3 points): " + bull, 150, 100);
@@ -29,9 +29,22 @@ void game() {
   displayTarget2();
   displayTarget3();
   if (lives <= 0) {
-    mode = GAMEOVER;
-    resetVariables();
+    total = bull*3 + mid*2 + out;
+  if (lives <= 0) {
+  total = bull*3 + mid*2 + out;
+  if (total > highscore) {
+    highscore = total;
+    newHighScore = true;
+  } else {
+    newHighScore = false;
   }
+  gameover.rewind();
+  gameover.play();
+  theme.pause();
+  resetVariables();
+  mode = GAMEOVER;
+}
+}
 }
 void gameClicks() {
   boolean hit = false;
